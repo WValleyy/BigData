@@ -50,6 +50,6 @@ def send_data_over_socket(file_path, host='127.0.0.1', port=9999, chunk_size=1):
         s.close()
 
 if __name__ == "__main__":
-    send_data_over_socket(r"G:\g\Hoc\2024.1.soict\Final_BigData\BigDataProject\E2EDataEngineering\src\datasets\yelp_academic_dataset_review.json")
+    send_data_over_socket(r"G:\g\Hoc\2024.1.soict\Final_BigData\BigDataProject\BigDataProject2\src\datasets\yelp_academic_dataset_review.json")
 
     

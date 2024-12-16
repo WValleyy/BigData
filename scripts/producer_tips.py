@@ -3,12 +3,13 @@ from pathlib import Path
 path_to_utils = Path(__file__).parent.parent
 sys.path.insert(0, str(path_to_utils))
 
-from script.utils import load_environment_variables
+from utils import load_environment_variables
 from confluent_kafka import Producer
 from dotenv import load_dotenv
-from producer_utils import retrieve_real_time_data
+from producer_utils import ingest_send_data
 load_dotenv()
 env_vars = load_environment_variables()
+topic = "tips_topic"
 # Configuration for Kafka Producer
 conf = {
     # Pointing to all three brokers
@@ -17,9 +18,10 @@ conf = {
     'enable.idempotence': True,
 }
 producer = Producer(conf)
-
+path = r"G:\g\Hoc\2024.1.soict\Final_BigData\BigDataProject\E2EDataEngineering\src\datasets\yelp_academic_dataset_tip.json"
 if __name__ == '__main__':
-    retrieve_real_time_data(producer,
-                            env_vars.get("STOCKS"),
-                            env_vars.get("STOCK_PRICE_KAFKA_TOPIC"),
+    ingest_send_data(producer,
+                    topic,
+                    path
                             )
+    
